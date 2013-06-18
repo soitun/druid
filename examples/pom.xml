@@ -149,6 +149,11 @@
             <artifactId>easymock</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.d8a</groupId>
+            <artifactId>d8a-conjure</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

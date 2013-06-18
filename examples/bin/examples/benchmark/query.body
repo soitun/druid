@@ -1,0 +1,9 @@
+{
+    "queryType": "timeBoundary",
+    "dataSource": "performance",
+    "granularity": "all",
+    "dimensions": [ ],
+    "aggregations":[     { "type": "count", "name": "rows"}    ],
+    "postAggregations":[],
+    "intervals":["2012-10-01T00:00/2020-01-01T00"]
+}
