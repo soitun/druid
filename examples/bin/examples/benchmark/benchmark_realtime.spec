@@ -2,7 +2,7 @@
       "maxRowsInMemory" : 500000
     },
   "firehose" : { "parser" : { "data" : { "columns" : [ "timestamp", 
-  				"col31"
+  				"color", "random_num", "day" , "month", "date" , "time"
                 ],
               "delimiter" : "#",
               "dimensions" :  [ ],
@@ -14,14 +14,19 @@
             }
         },
       "rate" : 50000,
-      "file" : "examples/benchmark/event.txt",
+      "file" : "config/event.txt",
       "type" : "conjurer"
     },
   "plumber" : { "type" : "realtime" ,
                   "windowPeriod" : "PT1m",
                 "segmentGranularity":"hour",
                 "basePersistDirectory" : "/tmp/realtime/eval2BasePersist" },
-  "schema" : { "aggregators" : [],
+  "schema" : { "aggregators" : [  
+  		{ "type": "longSum", "name": "longSum", "fieldName" : "random_num" } ,
+   		{ "type": "doubleSum", "name": "doubleSum", "fieldName" : "random_num" } ,
+    	{ "type": "max", "name": "max", "fieldName" : "random_num" }  ,
+     	{ "type": "min", "name": "min", "fieldName" : "random_num" }  
+     	],
       "dataSource" : "performance",
       "indexGranularity" : "minute"
     }

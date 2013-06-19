@@ -1,1 +1,1 @@
-${type:"time",format:"millis"}#${name:"now",type:"time",format:"hh-mm-ss"}
+${type:"time",format:"millis"}#${type:"randomChoice", list:["Red", "Green", "Brown", "Blue", "Yellow", "Orange", "Purple", "Black", "White"]}#${type:"minmax", min:1, max:9999}#${type:"randomChoice", list:["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]}#${type:"randomChoice", list:["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}#${type:"time",format:"yyyy-MM-dd"}#${type:"time",format:"hh-mm-ss"}
