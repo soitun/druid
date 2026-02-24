@@ -17,24 +17,18 @@
  * under the License.
  */
 
-package org.apache.druid.msq.input;
+package org.apache.druid.query.filter;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import org.apache.druid.timeline.DataSegment;
 
-/**
- * Slice of an {@link InputSpec} assigned to a particular worker.
- *
- * On the controller, these are produced using {@link InputSpecSlicer}. On workers, these are transformed into
- * {@link PhysicalInputSlice} using {@link InputSliceReader}.
- */
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
-public interface InputSlice
+import java.util.Collection;
+import java.util.function.Function;
+
+public interface SegmentPruner
 {
   /**
-   * Returns the number of files contained within this split. This is the same number that would be added to
-   * {@link org.apache.druid.msq.counters.CounterTracker} on full iteration through {@link InputSliceReader#attach}.
-   *
-   * May be zero for some kinds of slices, even if they contain data, if the input is not file-based.
+   * Filter the given {@link Iterable} of objects containing a {@link DataSegment} (obtained from the converter
+   * function), to reduce the overall working set which need to be processed.
    */
-  int fileCount();
+  <T> Collection<T> prune(Iterable<T> input, Function<T, DataSegment> converter);
 }
